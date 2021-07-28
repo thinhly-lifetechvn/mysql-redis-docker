@@ -16,10 +16,10 @@ services:
   redis:
     image: "redis:alpine"
     container_name: lazy-redis
-    command: redis-server /home/lythinh/db/redis.conf
+    command: redis-server /home/lythinh/db/redis.conf #change pass here
     volumes:
-      - ./redis.conf:/home/lythinh/db/redis.conf
-      - ./redis-data:/home/lythinh/db/redis-data
+      - ./redis.conf:/home/lythinh/db/redis.conf #change pass here
+      - ./redis-data:/home/lythinh/db/redis-data #change pass here
     ports:
       - "6379:6379"
     expose:
