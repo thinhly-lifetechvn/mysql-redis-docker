@@ -9,7 +9,7 @@ services:
     expose:
       - "3306"
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: p@ssword
     volumes:
       - ./mysql/data:/var/lib/mysql
       - ./mysql/init:/docker-entrypoint-initdb.d
@@ -19,9 +19,8 @@ services:
     command: redis-server /home/lythinh/db/redis.conf
     volumes:
       - ./redis.conf:/home/lythinh/db/redis.conf
+      - ./redis-data:/home/lythinh/db/redis-data
     ports:
       - "6379:6379"
     expose:
       - "6379"
-    environment:
-      - REDIS_PASSWORD=password
