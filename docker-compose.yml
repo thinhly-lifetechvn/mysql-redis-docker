@@ -1,0 +1,27 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: lazy-mysql
+    command: --max_allowed_packet=33554432
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+  redis:
+    image: "redis:alpine"
+    container_name: lazy-redis
+    command: redis-server /home/lythinh/db/redis.conf
+    volumes:
+      - ./redis.conf:/home/lythinh/db/redis.conf
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
+    environment:
+      - REDIS_PASSWORD=password
